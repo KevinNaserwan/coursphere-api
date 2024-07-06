@@ -22,4 +22,6 @@ func NewUserController(router *gin.RouterGroup, userService userService.Service,
 	router.GET("/users/:id", controller.GetByID)
 	router.PUT("/users/:id", controller.Update)
 	router.DELETE("/users/:id", controller.Delete)
+	router.POST("/resend-otp", controller.ResendOTPByEmail)
+	router.POST("/verify-otp", controller.VerifyAuthToken)
 }

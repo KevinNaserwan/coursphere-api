@@ -17,6 +17,7 @@ import (
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"github.com/swaggo/swag/example/basic/docs"
+	"gopkg.in/gomail.v2"
 	"gorm.io/gorm"
 )
 
@@ -52,14 +53,14 @@ func (a *app) StartServer() {
 	}
 
 	jwtManager := jwt.NewJWTManager(a.config.JwtSecret)
-	// mailDialer := gomail.NewDialer(
-	// 	a.config.EmailHost,
-	// 	int(a.config.EmailPort),
-	// 	a.config.EmailUser,
-	// 	a.config.EmailPassword,
-	// )
+	mailDialer := gomail.NewDialer(
+		a.config.EmailHost,
+		int(a.config.EmailPort),
+		a.config.EmailUser,
+		a.config.EmailPassword,
+	)
 
-	initController(server, db, jwtManager)
+	initController(server, db, jwtManager, mailDialer)
 
 	log.Printf("Server is running on %s mode", strings.ToUpper(a.config.Environment))
 	err := server.Run(fmt.Sprintf(":%d", a.config.Port))
@@ -73,9 +74,10 @@ func initController(
 	root *gin.Engine,
 	db *gorm.DB,
 	jwtManager *jwt.JWTManager,
+	mailDialer *gomail.Dialer,
 ) {
 	userRepository := UserRepository.NewUserRepository(db)
-	userService := UserService.NewUserService(userRepository, jwtManager)
+	userService := UserService.NewUserService(userRepository, jwtManager, mailDialer)
 
 	routerGroup := root.Group("/api/v1")
 

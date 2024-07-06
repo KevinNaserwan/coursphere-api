@@ -13,6 +13,7 @@ type User struct {
 	Password        string            `gorm:"not null;column:password"`
 	Profession      string            `gorm:"column:profession;default:null"`
 	AuthCode        string            `gorm:"column:auth_code"`
+	IsVerified      bool              `gorm:"column:is_verified;default:false"`
 	UserAchievement []UserAchievement `gorm:"many2many:user_achievement"`
 }
 

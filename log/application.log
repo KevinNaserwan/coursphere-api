@@ -97,3 +97,87 @@ Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-
 [GIN] 2024/07/06 - 21:49:30 | 200 |     590.541µs |             ::1 | GET      "/api/v1/user/users"
 [GIN] 2024/07/06 - 21:50:05 | 200 |    1.276959ms |             ::1 | DELETE   "/api/v1/user/users/33b26128-550e-4aa2-a051-99a98ed60950"
 [GIN] 2024/07/06 - 21:50:08 | 200 |     572.458µs |             ::1 | GET      "/api/v1/user/users"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /                         --> github.com/kevinnaserwan/coursphere-api/internal/app.(*app).StartServer.func1 (4 handlers)
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] POST   /api/v1/user/register     --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Register-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/login        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Login-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetByID-fm (5 handlers)
+[GIN-debug] PUT    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Update-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Delete-fm (5 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+[GIN] 2024/07/06 - 22:33:42 | 400 |  117.527625ms |             ::1 | POST     "/api/v1/user/register"
+Error #01: 400	Failed to insert user: ERROR: duplicate key value violates unique constraint "uni_users_email" (SQLSTATE 23505)
+[GIN] 2024/07/06 - 22:33:59 | 200 |  5.345199708s |             ::1 | POST     "/api/v1/user/register"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /                         --> github.com/kevinnaserwan/coursphere-api/internal/app.(*app).StartServer.func1 (4 handlers)
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] POST   /api/v1/user/register     --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Register-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/login        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Login-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetByID-fm (5 handlers)
+[GIN-debug] PUT    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Update-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Delete-fm (5 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+[GIN] 2024/07/06 - 22:48:11 | 400 |  129.467209ms |             ::1 | POST     "/api/v1/user/register"
+Error #01: 400	Failed to insert user: ERROR: duplicate key value violates unique constraint "uni_users_username" (SQLSTATE 23505)
+[GIN] 2024/07/06 - 22:48:16 | 400 |   111.40425ms |             ::1 | POST     "/api/v1/user/register"
+Error #01: 400	Failed to insert user: ERROR: duplicate key value violates unique constraint "uni_users_username" (SQLSTATE 23505)
+[GIN] 2024/07/06 - 22:48:26 | 200 |  3.139352542s |             ::1 | POST     "/api/v1/user/register"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /                         --> github.com/kevinnaserwan/coursphere-api/internal/app.(*app).StartServer.func1 (4 handlers)
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] POST   /api/v1/user/register     --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Register-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/login        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Login-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetByID-fm (5 handlers)
+[GIN-debug] PUT    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Update-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Delete-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/resend-otp   --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).ResendOTPByEmail-fm (5 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+[GIN] 2024/07/06 - 23:16:25 | 200 |    2.664208ms |             ::1 | GET      "/api/v1/user/users"
+[GIN] 2024/07/06 - 23:17:28 | 400 |     114.917µs |             ::1 | POST     "/api/v1/user/resend-otp"
+[GIN] 2024/07/06 - 23:17:53 | 200 |  2.871305583s |             ::1 | POST     "/api/v1/user/resend-otp?email=naserwankevin@gmail.com"
+[GIN] 2024/07/06 - 23:18:31 | 200 |  2.725155291s |             ::1 | POST     "/api/v1/user/resend-otp?email=naserwankevin@gmail.com"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /                         --> github.com/kevinnaserwan/coursphere-api/internal/app.(*app).StartServer.func1 (4 handlers)
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] POST   /api/v1/user/register     --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Register-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/login        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Login-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetByID-fm (5 handlers)
+[GIN-debug] PUT    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Update-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Delete-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/resend-otp   --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).ResendOTPByEmail-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/verify-otp   --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).VerifyAuthToken-fm (5 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+[GIN] 2024/07/06 - 23:38:26 | 200 |   10.293875ms |             ::1 | POST     "/api/v1/user/verify-otp"

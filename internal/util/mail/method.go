@@ -12,11 +12,9 @@ var templates embed.FS
 
 var parsedTemplates = template.Must(template.ParseFS(templates, "templates/*.html"))
 
-func RenderEmailVerificationTemplate(data EmailVerification, frontEndUrl string) (string, error) {
+func RenderEmailVerificationTemplate(data EmailVerification) (string, error) {
 	var buf bytes.Buffer
-	err := parsedTemplates.ExecuteTemplate(&buf, "email_verification.html", map[string]string{
-		"Link": fmt.Sprintf("%s?token=%s", frontEndUrl, data.Token),
-	})
+	err := parsedTemplates.ExecuteTemplate(&buf, "email_verification.html", data)
 	if err != nil {
 		return "", err
 	}
@@ -26,7 +24,7 @@ func RenderEmailVerificationTemplate(data EmailVerification, frontEndUrl string)
 func RenderPasswordResetTemplate(data PasswordReset, frontEndUrl string) (string, error) {
 	var buf bytes.Buffer
 	err := parsedTemplates.ExecuteTemplate(&buf, "reset_password.html", map[string]string{
-		"Link": fmt.Sprintf("%s/reset-password?token=%s", frontEndUrl, data.Token),
+		"Link": fmt.Sprintf("%s/reset-password?token=%s", frontEndUrl, data.OTP),
 	})
 	if err != nil {
 		return "", err

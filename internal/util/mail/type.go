@@ -2,10 +2,10 @@ package mail
 
 type (
 	EmailVerification struct {
-		Token string
+		OTP string
 	}
 
 	PasswordReset struct {
-		Token string
+		OTP string
 	}
 )

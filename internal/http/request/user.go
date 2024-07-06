@@ -10,6 +10,11 @@ type UserUpdateRequest struct {
 	Username string `json:"username"`
 }
 
+type InsertAuthCodeRequest struct {
+	Email    string `json:"email" binding:"required"`
+	AuthCode string `json:"auth_code" binding:"required"`
+}
+
 type UserLoginRequest struct {
 	Email    string `json:"email" binding:"required"`
 	Password string `json:"password" binding:"required"`

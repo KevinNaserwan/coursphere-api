@@ -14,4 +14,6 @@ type Service interface {
 	GetAll(ctx context.Context) (user []response.UserResponse, err error)
 	Update(ctx context.Context, ID string, req request.UserUpdateRequest) (err error)
 	Delete(ctx context.Context, ID string) (err error)
+	ResendOTPByEmail(ctx context.Context, email string) error
+	VerifyAuthToken(ctx context.Context, req request.UserOTPVerifyRequest) (err error)
 }

@@ -14,6 +14,13 @@ definitions:
     required:
     - message
     type: object
+  request.CreateBookCategoryRequest:
+    properties:
+      name:
+        type: string
+    required:
+    - name
+    type: object
   request.UserLoginRequest:
     properties:
       email:
@@ -23,6 +30,16 @@ definitions:
     required:
     - email
     - password
+    type: object
+  request.UserOTPVerifyRequest:
+    properties:
+      auth_code:
+        type: string
+      email:
+        type: string
+    required:
+    - auth_code
+    - email
     type: object
   request.UserRegisterRequest:
     properties:
@@ -41,6 +58,20 @@ definitions:
     properties:
       description:
         type: string
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  response.BookCategoryDetailResponse:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  response.BookCategoryResponse:
+    properties:
       id:
         type: string
       name:
@@ -86,6 +117,115 @@ info:
     email: kevinnaserwan@gmail.com
     name: Coursphere API
 paths:
+  /book-category/{ID}:
+    get:
+      consumes:
+      - application/json
+      description: Get Book Category By ID Endpoint
+      parameters:
+      - description: Book Category ID
+        in: path
+        name: ID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.BookCategoryDetailResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Get Book Category By ID
+      tags:
+      - Book Category
+  /book-category/all:
+    get:
+      consumes:
+      - application/json
+      description: Get All Book Categories Endpoint
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.BookCategoryResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Get All Book Categories
+      tags:
+      - Book Category
+  /book-category/create:
+    post:
+      consumes:
+      - application/json
+      description: Create Book Category Endpoint
+      parameters:
+      - description: Create Book Category Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.CreateBookCategoryRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.JwtToken'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Create Book Category
+      tags:
+      - Book Category
   /user/{id}:
     delete:
       consumes:
@@ -271,6 +411,77 @@ paths:
           schema:
             $ref: '#/definitions/http.Error'
       summary: Login User
+      tags:
+      - User
+  /user/resend-otp:
+    post:
+      consumes:
+      - application/json
+      description: Resend Verification Email Endpoint
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.UserResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Resend Verification Email
+      tags:
+      - User
+  /user/verify-otp:
+    post:
+      consumes:
+      - application/json
+      description: Verify User OTP Endpoint
+      parameters:
+      - description: Verify User OTP Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.UserOTPVerifyRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.UserResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Verify User OTP
       tags:
       - User
 securityDefinitions:

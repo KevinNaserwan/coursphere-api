@@ -7,10 +7,13 @@ import (
 
 	"github.com/gin-gonic/gin"
 	postgresConfig "github.com/kevinnaserwan/coursphere-api/config/postgres"
+	bookCategoryController "github.com/kevinnaserwan/coursphere-api/internal/controller/book_category"
 	userController "github.com/kevinnaserwan/coursphere-api/internal/controller/user"
 	http "github.com/kevinnaserwan/coursphere-api/internal/http/server"
 	"github.com/kevinnaserwan/coursphere-api/internal/http/server/middleware"
+	BookCategoryRepository "github.com/kevinnaserwan/coursphere-api/internal/repository/book_category/postgres"
 	UserRepository "github.com/kevinnaserwan/coursphere-api/internal/repository/user/postgres"
+	BookCategoryService "github.com/kevinnaserwan/coursphere-api/internal/service/book_category"
 	UserService "github.com/kevinnaserwan/coursphere-api/internal/service/user"
 	"github.com/kevinnaserwan/coursphere-api/internal/util/jwt"
 	"github.com/kevinnaserwan/coursphere-api/internal/util/postgres"
@@ -26,7 +29,7 @@ func (a *app) StartServer() {
 
 	server.GET("", func(ctx *gin.Context) {
 		ctx.JSON(200, map[string]interface{}{
-			"message": "Welcome to simak unsri API",
+			"message": "Welcome to coursphere API",
 		})
 	})
 
@@ -42,8 +45,8 @@ func (a *app) StartServer() {
 	postgresConfig.Migrate(db)
 
 	if a.config.Environment != "release" {
-		docs.SwaggerInfo.Title = "SIMAK UNSRI API"
-		docs.SwaggerInfo.Description = "Sistem Akademik Mahasiswa Universitas Sriwijaya"
+		docs.SwaggerInfo.Title = "COURSPHERE API"
+		docs.SwaggerInfo.Description = "E-Commerce Mobile API"
 		docs.SwaggerInfo.Version = "1.0"
 		docs.SwaggerInfo.Host = fmt.Sprintf("localhost:%d", a.config.Port)
 		docs.SwaggerInfo.BasePath = "/api/v1"
@@ -77,11 +80,14 @@ func initController(
 	mailDialer *gomail.Dialer,
 ) {
 	userRepository := UserRepository.NewUserRepository(db)
+	bookCategoryRepository := BookCategoryRepository.NewBookCategoryRepository(db)
 	userService := UserService.NewUserService(userRepository, jwtManager, mailDialer)
+	bookCategoryService := BookCategoryService.NewBookCategoryService(bookCategoryRepository)
 
 	routerGroup := root.Group("/api/v1")
 
 	routerGroup.Use(middleware.ErrorHandler())
 
 	userController.NewUserController(routerGroup.Group("/user"), userService, jwtManager)
+	bookCategoryController.NewBookCategoryController(routerGroup.Group("/book-category"), bookCategoryService)
 }

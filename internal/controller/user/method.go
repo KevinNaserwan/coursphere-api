@@ -7,17 +7,17 @@ import (
 	"github.com/kevinnaserwan/coursphere-api/internal/http/request"
 )
 
-// @Summary		Create User
-// @Description	Create User Endpoint
-// @Tags			User
-// @Accept			json
-// @Produce		json
-// @Param			request	body		request.UserRegisterRequest	true	"Create User Request"
-// @Success		200		{object}	http.Response{value=response.JwtToken}
-// @Failure		400		{object}	http.Error
-// @Failure		404		{object}	http.Error
-// @Failure		500		{object}	http.Error
-// @Router			/user/create [post]
+//	@Summary		Create User
+//	@Description	Create User Endpoint
+//	@Tags			User
+//	@Accept			json
+//	@Produce		json
+//	@Param			request	body		request.UserRegisterRequest	true	"Create User Request"
+//	@Success		200		{object}	http.Response{value=response.JwtToken}
+//	@Failure		400		{object}	http.Error
+//	@Failure		404		{object}	http.Error
+//	@Failure		500		{object}	http.Error
+//	@Router			/user/create [post]
 func (c *userController) Register(ctx *gin.Context) {
 	var req request.UserRegisterRequest
 	if err := ctx.ShouldBindJSON(&req); err != nil {
@@ -33,17 +33,17 @@ func (c *userController) Register(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{"message": "User created successfully"})
 }
 
-// @Summary		Login User
-// @Description	Login User Endpoint
-// @Tags			User
-// @Accept			json
-// @Produce		json
-// @Param			request	body		request.UserLoginRequest	true	"Login User Request"
-// @Success		200		{object}	http.Response{value=response.JwtToken}
-// @Failure		400		{object}	http.Error
-// @Failure		404		{object}	http.Error
-// @Failure		500		{object}	http.Error
-// @Router			/user/login [post]
+//	@Summary		Login User
+//	@Description	Login User Endpoint
+//	@Tags			User
+//	@Accept			json
+//	@Produce		json
+//	@Param			request	body		request.UserLoginRequest	true	"Login User Request"
+//	@Success		200		{object}	http.Response{value=response.JwtToken}
+//	@Failure		400		{object}	http.Error
+//	@Failure		404		{object}	http.Error
+//	@Failure		500		{object}	http.Error
+//	@Router			/user/login [post]
 func (c *userController) Login(ctx *gin.Context) {
 	var req request.UserLoginRequest
 	if err := ctx.ShouldBindJSON(&req); err != nil {
@@ -60,16 +60,16 @@ func (c *userController) Login(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{"token": token})
 }
 
-// @Summary		Get All Users
-// @Description	Get All Users Endpoint
-// @Tags			User
-// @Accept			json
-// @Produce		json
-// @Success		200	{object}	http.Response{value=[]response.UserResponse}
-// @Failure		400	{object}	http.Error
-// @Failure		404	{object}	http.Error
-// @Failure		500	{object}	http.Error
-// @Router			/user/all [get]
+//	@Summary		Get All Users
+//	@Description	Get All Users Endpoint
+//	@Tags			User
+//	@Accept			json
+//	@Produce		json
+//	@Success		200	{object}	http.Response{value=[]response.UserResponse}
+//	@Failure		400	{object}	http.Error
+//	@Failure		404	{object}	http.Error
+//	@Failure		500	{object}	http.Error
+//	@Router			/user/all [get]
 func (c *userController) GetAll(ctx *gin.Context) {
 	users, err := c.UserService.GetAll(ctx)
 	if err != nil {
@@ -80,17 +80,17 @@ func (c *userController) GetAll(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{"users": users})
 }
 
-// @Summary		Get User By ID
-// @Description	Get User By ID Endpoint
-// @Tags			User
-// @Accept			json
-// @Produce		json
-// @Param			id	path		string	true	"User ID"
-// @Success		200	{object}	http.Response{value=response.UserResponse}
-// @Failure		400	{object}	http.Error
-// @Failure		404	{object}	http.Error
-// @Failure		500	{object}	http.Error
-// @Router			/user/{id} [get]
+//	@Summary		Get User By ID
+//	@Description	Get User By ID Endpoint
+//	@Tags			User
+//	@Accept			json
+//	@Produce		json
+//	@Param			id	path		string	true	"User ID"
+//	@Success		200	{object}	http.Response{value=response.UserResponse}
+//	@Failure		400	{object}	http.Error
+//	@Failure		404	{object}	http.Error
+//	@Failure		500	{object}	http.Error
+//	@Router			/user/{id} [get]
 func (c *userController) GetByID(ctx *gin.Context) {
 	ID := ctx.Param("id")
 
@@ -133,17 +133,17 @@ func (c *userController) Update(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{"message": "User updated successfully"})
 }
 
-// @Summary		Delete User
-// @Description	Delete User Endpoint
-// @Tags			User
-// @Accept			json
-// @Produce		json
-// @Param			id	path		string	true	"User ID"
-// @Success		200	{object}	http.Response{value=response.UserResponse}
-// @Failure		400	{object}	http.Error
-// @Failure		404	{object}	http.Error
-// @Failure		500	{object}	http.Error
-// @Router			/user/{id} [delete]
+//	@Summary		Delete User
+//	@Description	Delete User Endpoint
+//	@Tags			User
+//	@Accept			json
+//	@Produce		json
+//	@Param			id	path		string	true	"User ID"
+//	@Success		200	{object}	http.Response{value=response.UserResponse}
+//	@Failure		400	{object}	http.Error
+//	@Failure		404	{object}	http.Error
+//	@Failure		500	{object}	http.Error
+//	@Router			/user/{id} [delete]
 func (c *userController) Delete(ctx *gin.Context) {
 	ID := ctx.Param("id")
 
@@ -155,17 +155,17 @@ func (c *userController) Delete(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{"message": "User deleted successfully"})
 }
 
-// @Summary		Resend Verification Email
-// @Description	Resend Verification Email Endpoint
-// @Tags			User
-// @Accept			json
-// @Produce		json
-// @QueryParam		email	query	string	true	"User Email"
-// @Success		200	{object}	http.Response{value=response.UserResponse}
-// @Failure		400	{object}	http.Error
-// @Failure		404	{object}	http.Error
-// @Failure		500	{object}	http.Error
-// @Router			/user/resend-otp [post]
+//	@Summary		Resend Verification Email
+//	@Description	Resend Verification Email Endpoint
+//	@Tags			User
+//	@Accept			json
+//	@Produce		json
+//	@QueryParam		email	query				string	true	"User Email"
+//	@Success		200		{object}	http.Response{value=response.UserResponse}
+//	@Failure		400		{object}	http.Error
+//	@Failure		404		{object}	http.Error
+//	@Failure		500		{object}	http.Error
+//	@Router			/user/resend-otp [post]
 func (uc *userController) ResendOTPByEmail(c *gin.Context) {
 	email := c.Query("email")
 	if email == "" {
@@ -182,17 +182,17 @@ func (uc *userController) ResendOTPByEmail(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"message": "OTP has been resent"})
 }
 
-// @Summary		Verify User OTP
-// @Description	Verify User OTP Endpoint
-// @Tags			User
-// @Accept			json
-// @Produce		json
-// @Param			request	body		request.UserOTPVerifyRequest	true	"Verify User OTP Request"
-// @Success		200		{object}	http.Response{value=response.UserResponse}
-// @Failure		400		{object}	http.Error
-// @Failure		404		{object}	http.Error
-// @Failure		500		{object}	http.Error
-// @Router			/user/verify-otp [post]
+//	@Summary		Verify User OTP
+//	@Description	Verify User OTP Endpoint
+//	@Tags			User
+//	@Accept			json
+//	@Produce		json
+//	@Param			request	body		request.UserOTPVerifyRequest	true	"Verify User OTP Request"
+//	@Success		200		{object}	http.Response{value=response.UserResponse}
+//	@Failure		400		{object}	http.Error
+//	@Failure		404		{object}	http.Error
+//	@Failure		500		{object}	http.Error
+//	@Router			/user/verify-otp [post]
 func (uc *userController) VerifyAuthToken(c *gin.Context) {
 	var req request.UserOTPVerifyRequest
 	if err := c.ShouldBindJSON(&req); err != nil {

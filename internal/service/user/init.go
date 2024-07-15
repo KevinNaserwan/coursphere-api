@@ -127,7 +127,7 @@ func (s *userService) ResendOTPByEmail(ctx context.Context, email string) error 
 	}
 
 	// Send OTP to user's email
-	msg := mail.NewMessage(os.Getenv("EMAIL_FROM"), user.Email, "Resend Email Verification", emailBody)
+	msg := mail.NewMessage(os.Getenv("EMAIL_FROM"), user.Email, "Coursphere - Email Verification", emailBody)
 	if err := s.MailDialer.DialAndSend(msg); err != nil {
 		return errCommon.NewBadRequest("Failed to send email: " + err.Error())
 	}

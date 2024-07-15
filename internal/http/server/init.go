@@ -47,7 +47,7 @@ func NewHTTPServer(ginMode string) *gin.Engine {
 
 	router.Use(cors.New(cors.Config{
 		AllowMethods:     []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
-		AllowHeaders:     []string{"Origin", "Content-Length", "Content-Type", "Authorization", "Content-Disposition", "X-Filename"},
+		AllowHeaders:     []string{"Origin", "Content-Length", "Content-Type", "Authorization", "Content-Disposition", "X-Filename", "ngrok-skip-browser-warning"},
 		ExposeHeaders:    []string{"Content-Disposition", "X-Filename"},
 		AllowCredentials: true,
 		AllowAllOrigins:  true,

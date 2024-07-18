@@ -7,12 +7,15 @@ import (
 
 	"github.com/gin-gonic/gin"
 	postgresConfig "github.com/kevinnaserwan/coursphere-api/config/postgres"
+	bookController "github.com/kevinnaserwan/coursphere-api/internal/controller/book"
 	bookCategoryController "github.com/kevinnaserwan/coursphere-api/internal/controller/book_category"
 	userController "github.com/kevinnaserwan/coursphere-api/internal/controller/user"
 	http "github.com/kevinnaserwan/coursphere-api/internal/http/server"
 	"github.com/kevinnaserwan/coursphere-api/internal/http/server/middleware"
+	BookRepository "github.com/kevinnaserwan/coursphere-api/internal/repository/book/postgres"
 	BookCategoryRepository "github.com/kevinnaserwan/coursphere-api/internal/repository/book_category/postgres"
 	UserRepository "github.com/kevinnaserwan/coursphere-api/internal/repository/user/postgres"
+	BookService "github.com/kevinnaserwan/coursphere-api/internal/service/book"
 	BookCategoryService "github.com/kevinnaserwan/coursphere-api/internal/service/book_category"
 	UserService "github.com/kevinnaserwan/coursphere-api/internal/service/user"
 	"github.com/kevinnaserwan/coursphere-api/internal/util/jwt"
@@ -81,8 +84,10 @@ func initController(
 ) {
 	userRepository := UserRepository.NewUserRepository(db)
 	bookCategoryRepository := BookCategoryRepository.NewBookCategoryRepository(db)
+	bookRepository := BookRepository.NewBookRepository(db)
 	userService := UserService.NewUserService(userRepository, jwtManager, mailDialer)
 	bookCategoryService := BookCategoryService.NewBookCategoryService(bookCategoryRepository)
+	bookService := BookService.NewBookService(bookRepository)
 
 	routerGroup := root.Group("/api/v1")
 
@@ -90,4 +95,5 @@ func initController(
 
 	userController.NewUserController(routerGroup.Group("/user"), userService, jwtManager)
 	bookCategoryController.NewBookCategoryController(routerGroup.Group("/book-category"), bookCategoryService)
+	bookController.NewBookController(routerGroup.Group("/book"), bookService)
 }

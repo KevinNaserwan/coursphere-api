@@ -18,6 +18,59 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/book": {
+            "get": {
+                "description": "Get All Books Endpoint",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Book"
+                ],
+                "summary": "Get All Books",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/http.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "$ref": "#/definitions/response.BookResponse"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/http.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/http.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/http.Error"
+                        }
+                    }
+                }
+            }
+        },
         "/book-category/all": {
             "get": {
                 "description": "Get All Book Categories Endpoint",
@@ -169,7 +222,262 @@ const docTemplate = `{
                                     "type": "object",
                                     "properties": {
                                         "value": {
-                                            "$ref": "#/definitions/response.BookCategoryDetailResponse"
+                                            "$ref": "#/definitions/response.BookCategoryResponse"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/http.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/http.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/http.Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/book/create": {
+            "post": {
+                "description": "Create Book Endpoint",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Book"
+                ],
+                "summary": "Create Book",
+                "parameters": [
+                    {
+                        "description": "Create Book Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.CreateBookRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/http.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "$ref": "#/definitions/response.JwtToken"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/http.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/http.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/http.Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/book/{id}": {
+            "get": {
+                "description": "Get Book By ID Endpoint",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Book"
+                ],
+                "summary": "Get Book By ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Book ID",
+                        "name": "ID",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/http.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "$ref": "#/definitions/response.BookResponse"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/http.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/http.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/http.Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update Book Endpoint",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Book"
+                ],
+                "summary": "Update Book",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Book ID",
+                        "name": "ID",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Update Book Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/request.UpdateBookRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/http.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "$ref": "#/definitions/response.BookResponse"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/http.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/http.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/http.Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete Book Endpoint",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Book"
+                ],
+                "summary": "Delete Book",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Book ID",
+                        "name": "ID",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/http.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "$ref": "#/definitions/response.BookResponse"
                                         }
                                     }
                                 }
@@ -656,6 +964,81 @@ const docTemplate = `{
                 }
             }
         },
+        "request.CreateBookRequest": {
+            "type": "object",
+            "required": [
+                "book_file",
+                "category_id",
+                "language",
+                "likes",
+                "overview",
+                "rank",
+                "reading_time",
+                "title",
+                "writer"
+            ],
+            "properties": {
+                "book_file": {
+                    "type": "string"
+                },
+                "category_id": {
+                    "type": "string"
+                },
+                "language": {
+                    "type": "string"
+                },
+                "likes": {
+                    "type": "integer"
+                },
+                "overview": {
+                    "type": "string"
+                },
+                "rank": {
+                    "type": "integer"
+                },
+                "reading_time": {
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "writer": {
+                    "type": "string"
+                }
+            }
+        },
+        "request.UpdateBookRequest": {
+            "type": "object",
+            "properties": {
+                "book_file": {
+                    "type": "string"
+                },
+                "category_id": {
+                    "type": "string"
+                },
+                "language": {
+                    "type": "string"
+                },
+                "likes": {
+                    "type": "integer"
+                },
+                "overview": {
+                    "type": "string"
+                },
+                "rank": {
+                    "type": "integer"
+                },
+                "reading_time": {
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "writer": {
+                    "type": "string"
+                }
+            }
+        },
         "request.UserLoginRequest": {
             "type": "object",
             "required": [
@@ -719,7 +1102,7 @@ const docTemplate = `{
                 }
             }
         },
-        "response.BookCategoryDetailResponse": {
+        "response.BookCategoryResponse": {
             "type": "object",
             "properties": {
                 "id": {
@@ -730,13 +1113,51 @@ const docTemplate = `{
                 }
             }
         },
-        "response.BookCategoryResponse": {
+        "response.BookResponse": {
             "type": "object",
+            "required": [
+                "book_file",
+                "category",
+                "language",
+                "likes",
+                "overview",
+                "rank",
+                "reading_time",
+                "title",
+                "writer"
+            ],
             "properties": {
+                "book_file": {
+                    "type": "string"
+                },
+                "category": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/response.BookCategoryResponse"
+                    }
+                },
                 "id": {
                     "type": "string"
                 },
-                "name": {
+                "language": {
+                    "type": "string"
+                },
+                "likes": {
+                    "type": "integer"
+                },
+                "overview": {
+                    "type": "string"
+                },
+                "rank": {
+                    "type": "integer"
+                },
+                "reading_time": {
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "writer": {
                     "type": "string"
                 }
             }

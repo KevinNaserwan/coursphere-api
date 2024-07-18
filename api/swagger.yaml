@@ -21,6 +21,58 @@ definitions:
     required:
     - name
     type: object
+  request.CreateBookRequest:
+    properties:
+      book_file:
+        type: string
+      category_id:
+        type: string
+      language:
+        type: string
+      likes:
+        type: integer
+      overview:
+        type: string
+      rank:
+        type: integer
+      reading_time:
+        type: integer
+      title:
+        type: string
+      writer:
+        type: string
+    required:
+    - book_file
+    - category_id
+    - language
+    - likes
+    - overview
+    - rank
+    - reading_time
+    - title
+    - writer
+    type: object
+  request.UpdateBookRequest:
+    properties:
+      book_file:
+        type: string
+      category_id:
+        type: string
+      language:
+        type: string
+      likes:
+        type: integer
+      overview:
+        type: string
+      rank:
+        type: integer
+      reading_time:
+        type: integer
+      title:
+        type: string
+      writer:
+        type: string
+    type: object
   request.UserLoginRequest:
     properties:
       email:
@@ -63,19 +115,47 @@ definitions:
       name:
         type: string
     type: object
-  response.BookCategoryDetailResponse:
-    properties:
-      id:
-        type: string
-      name:
-        type: string
-    type: object
   response.BookCategoryResponse:
     properties:
       id:
         type: string
       name:
         type: string
+    type: object
+  response.BookResponse:
+    properties:
+      book_file:
+        type: string
+      category:
+        items:
+          $ref: '#/definitions/response.BookCategoryResponse'
+        type: array
+      id:
+        type: string
+      language:
+        type: string
+      likes:
+        type: integer
+      overview:
+        type: string
+      rank:
+        type: integer
+      reading_time:
+        type: integer
+      title:
+        type: string
+      writer:
+        type: string
+    required:
+    - book_file
+    - category
+    - language
+    - likes
+    - overview
+    - rank
+    - reading_time
+    - title
+    - writer
     type: object
   response.JwtToken:
     properties:
@@ -117,6 +197,38 @@ info:
     email: kevinnaserwan@gmail.com
     name: Coursphere API
 paths:
+  /book:
+    get:
+      consumes:
+      - application/json
+      description: Get All Books Endpoint
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.BookResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Get All Books
+      tags:
+      - Book
   /book-category/{ID}:
     get:
       consumes:
@@ -138,7 +250,7 @@ paths:
             - $ref: '#/definitions/http.Response'
             - properties:
                 value:
-                  $ref: '#/definitions/response.BookCategoryDetailResponse'
+                  $ref: '#/definitions/response.BookCategoryResponse'
               type: object
         "400":
           description: Bad Request
@@ -226,6 +338,163 @@ paths:
       summary: Create Book Category
       tags:
       - Book Category
+  /book/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Book Endpoint
+      parameters:
+      - description: Book ID
+        in: path
+        name: ID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.BookResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Delete Book
+      tags:
+      - Book
+    get:
+      consumes:
+      - application/json
+      description: Get Book By ID Endpoint
+      parameters:
+      - description: Book ID
+        in: path
+        name: ID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.BookResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Get Book By ID
+      tags:
+      - Book
+    put:
+      consumes:
+      - application/json
+      description: Update Book Endpoint
+      parameters:
+      - description: Book ID
+        in: path
+        name: ID
+        required: true
+        type: string
+      - description: Update Book Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.UpdateBookRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.BookResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Update Book
+      tags:
+      - Book
+  /book/create:
+    post:
+      consumes:
+      - application/json
+      description: Create Book Endpoint
+      parameters:
+      - description: Create Book Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.CreateBookRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.JwtToken'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Create Book
+      tags:
+      - Book
   /user/{id}:
     delete:
       consumes:

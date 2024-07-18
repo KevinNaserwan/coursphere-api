@@ -160,7 +160,7 @@ func (c *userController) Delete(ctx *gin.Context) {
 //	@Tags			User
 //	@Accept			json
 //	@Produce		json
-//	@QueryParam		email	query				string	true	"User Email"
+//	@QueryParam		email	query						string	true	"User Email"
 //	@Success		200		{object}	http.Response{value=response.UserResponse}
 //	@Failure		400		{object}	http.Error
 //	@Failure		404		{object}	http.Error

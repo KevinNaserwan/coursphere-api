@@ -86,7 +86,7 @@ type Book struct {
 	gorm.Model
 	ID             uuid.UUID `gorm:"type:uuid;default:gen_random_uuid()"`
 	Title          string    `gorm:"column:title"`
-	Languange      string    `gorm:"column:languange"`
+	Language       string    `gorm:"column:languange"`
 	Rank           int       `gorm:"column:rank"`
 	ReadingTime    int       `gorm:"column:reading_time"`
 	Likes          int       `gorm:"column:likes"`

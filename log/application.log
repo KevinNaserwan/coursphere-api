@@ -557,3 +557,38 @@ Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-
 [GIN-debug] Listening and serving HTTP on :5000
 [GIN] 2024/07/15 - 23:20:28 | 200 |    2.411417ms |             ::1 | GET      "/api/v1/book-category/a471a20d-9791-4c7e-8a9b-f6611cbfd45b"
 [GIN] 2024/07/15 - 23:20:55 | 200 |    1.154333ms |             ::1 | GET      "/api/v1/book-category/a471a20d-9791-4c7e-8a9b-f6611cbfd45b"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /                         --> github.com/kevinnaserwan/coursphere-api/internal/app.(*app).StartServer.func1 (4 handlers)
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] POST   /api/v1/user/register     --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Register-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/login        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Login-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetByID-fm (5 handlers)
+[GIN-debug] PUT    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Update-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Delete-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/resend-otp   --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).ResendOTPByEmail-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/verify-otp   --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).VerifyAuthToken-fm (5 handlers)
+[GIN-debug] POST   /api/v1/book-category/create --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).Insert-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book-category/all --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book-category/:id --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).GetByID-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/book-category/:id --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).Delete-fm (5 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+[GIN] 2024/07/18 - 23:03:27 | 200 |     1.88825ms |             ::1 | GET      "/api/v1/user/users"
+[GIN] 2024/07/18 - 23:03:34 | 404 |       1.459µs |             ::1 | GET      "/api/v1/book"
+[GIN] 2024/07/18 - 23:03:38 | 404 |       1.541µs |             ::1 | GET      "/api/v1/book"
+[GIN] 2024/07/18 - 23:03:49 | 200 |    2.297625ms |             ::1 | GET      "/api/v1/book-category/all"
+[GIN] 2024/07/18 - 23:03:53 | 200 |    3.782208ms |             ::1 | GET      "/api/v1/book-category/a471a20d-9791-4c7e-8a9b-f6611cbfd45b"
+[GIN] 2024/07/18 - 23:04:09 | 200 |    4.610625ms |             ::1 | POST     "/api/v1/book-category/create"
+[GIN] 2024/07/18 - 23:04:13 | 200 |    1.452416ms |             ::1 | POST     "/api/v1/book-category/create"
+[GIN] 2024/07/18 - 23:04:22 | 200 |    1.821542ms |             ::1 | POST     "/api/v1/book-category/create"
+[GIN] 2024/07/18 - 23:04:27 | 200 |     579.334µs |             ::1 | GET      "/api/v1/book-category/all"
+[GIN] 2024/07/18 - 23:05:19 | 200 |   21.121166ms |             ::1 | POST     "/api/v1/book-category/create"
+[GIN] 2024/07/18 - 23:05:22 | 200 |    2.299792ms |             ::1 | GET      "/api/v1/book-category/a471a20d-9791-4c7e-8a9b-f6611cbfd45b"
+[GIN] 2024/07/18 - 23:05:24 | 200 |     956.375µs |             ::1 | GET      "/api/v1/book-category/all"

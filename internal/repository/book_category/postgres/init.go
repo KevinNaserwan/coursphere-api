@@ -23,7 +23,7 @@ func NewBookCategoryRepository(db *gorm.DB) BookCategoryRepository.Repository {
 // Insert inserts a new book category into the database
 func (r *bookCategoryRepository) Insert(ctx context.Context, bookCategory *model.CategoryBook) error {
 	if err := r.db.Create(bookCategory).Error; err != nil {
-		return err
+		return errCommon.NewBadRequest("Failed to insert book category: " + err.Error())
 	}
 	return nil
 }
@@ -40,7 +40,7 @@ func (r *bookCategoryRepository) GetByID(ctx context.Context, ID uuid.UUID) (*mo
 // Update updates a book category in the database
 func (r *bookCategoryRepository) Update(ctx context.Context, bookCategory *model.CategoryBook) error {
 	if err := r.db.Save(bookCategory).Error; err != nil {
-		return err
+		return errCommon.NewBadRequest("Failed to update book category: " + err.Error())
 	}
 	return nil
 }
@@ -48,7 +48,7 @@ func (r *bookCategoryRepository) Update(ctx context.Context, bookCategory *model
 // Delete deletes a book category from the database
 func (r *bookCategoryRepository) Delete(ctx context.Context, ID uuid.UUID) error {
 	if err := r.db.Where("id = ?", ID).Delete(&model.CategoryBook{}).Error; err != nil {
-		return err
+		return errCommon.NewBadRequest("Failed to delete book category: " + err.Error())
 	}
 	return nil
 }
@@ -57,7 +57,7 @@ func (r *bookCategoryRepository) Delete(ctx context.Context, ID uuid.UUID) error
 func (r *bookCategoryRepository) GetAll(ctx context.Context) ([]model.CategoryBook, error) {
 	bookCategories := []model.CategoryBook{}
 	if err := r.db.Find(&bookCategories).Error; err != nil {
-		return nil, err
+		return nil, errCommon.NewBadRequest("No book categories found: " + err.Error())
 	}
 	return bookCategories, nil
 }

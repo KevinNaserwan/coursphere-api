@@ -39,7 +39,7 @@ func (c *bookCategoryController) Insert(ctx *gin.Context) {
 // @Accept			json
 // @Produce		json
 // @Param			ID	path		string	true	"Book Category ID"
-// @Success		200	{object}	http.Response{value=response.BookCategoryDetailResponse}
+// @Success		200	{object}	http.Response{value=response.BookCategoryResponse}
 // @Failure		400	{object}	http.Error
 // @Failure		404	{object}	http.Error
 // @Failure		500	{object}	http.Error

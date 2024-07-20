@@ -51,19 +51,18 @@ type CategoryCourse struct {
 
 type Course struct {
 	gorm.Model
-	ID               uuid.UUID      `gorm:"type:uuid;default:gen_random_uuid()"`
-	BannerImage      string         `gorm:"column:banner_image"`
-	Title            string         `gorm:"column:title"`
-	Description      string         `gorm:"column:description"`
-	MentorID         uuid.UUID      `gorm:"column:id;type:uuid;default:gen_random_uuid()"`
-	CategoryCourseID uuid.UUID      `gorm:"column:category_course_id;type:uuid;default:gen_random_uuid()"`
-	Videos           []Video        `gorm:"many2many:video"`
-	Star             int            `gorm:"column:star"`
-	Price            int            `gorm:"column:price"`
-	Lessons          int            `gorm:"column:lessons"`
-	CategoryID       uuid.UUID      `gorm:"column:category_id;type:uuid;default:gen_random_uuid()"`
-	Category         CategoryCourse `gorm:"foreignKey:CategoryID;references:ID"`
-	Mentor           Mentor         `gorm:"foreignKey:MentorID;references:ID"`
+	ID          uuid.UUID      `gorm:"type:uuid;default:gen_random_uuid()"`
+	BannerImage string         `gorm:"column:banner_image"`
+	Title       string         `gorm:"column:title"`
+	Description string         `gorm:"column:description"`
+	MentorID    uuid.UUID      `gorm:"column:id;type:uuid;default:gen_random_uuid()"`
+	Videos      []Video        `gorm:"many2many:video"`
+	Star        int            `gorm:"column:star"`
+	Price       int            `gorm:"column:price"`
+	Lessons     int            `gorm:"column:lessons"`
+	CategoryID  uuid.UUID      `gorm:"column:category_id;type:uuid;default:gen_random_uuid()"`
+	Category    CategoryCourse `gorm:"foreignKey:CategoryID;references:ID"`
+	Mentor      Mentor         `gorm:"foreignKey:MentorID;references:ID"`
 }
 
 type Video struct {

@@ -592,3 +592,254 @@ Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-
 [GIN] 2024/07/18 - 23:05:19 | 200 |   21.121166ms |             ::1 | POST     "/api/v1/book-category/create"
 [GIN] 2024/07/18 - 23:05:22 | 200 |    2.299792ms |             ::1 | GET      "/api/v1/book-category/a471a20d-9791-4c7e-8a9b-f6611cbfd45b"
 [GIN] 2024/07/18 - 23:05:24 | 200 |     956.375µs |             ::1 | GET      "/api/v1/book-category/all"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /                         --> github.com/kevinnaserwan/coursphere-api/internal/app.(*app).StartServer.func1 (4 handlers)
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] POST   /api/v1/user/register     --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Register-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/login        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Login-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetByID-fm (5 handlers)
+[GIN-debug] PUT    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Update-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Delete-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/resend-otp   --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).ResendOTPByEmail-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/verify-otp   --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).VerifyAuthToken-fm (5 handlers)
+[GIN-debug] POST   /api/v1/book-category/create --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).Insert-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book-category/all --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book-category/:id --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).GetByID-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/book-category/:id --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).Delete-fm (5 handlers)
+[GIN-debug] POST   /api/v1/book/book         --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Create-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book/book         --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book/book/:id     --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).GetByID-fm (5 handlers)
+[GIN-debug] PUT    /api/v1/book/book/:id     --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Update-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/book/book/:id     --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Delete-fm (5 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /                         --> github.com/kevinnaserwan/coursphere-api/internal/app.(*app).StartServer.func1 (4 handlers)
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] POST   /api/v1/user/register     --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Register-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/login        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Login-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetByID-fm (5 handlers)
+[GIN-debug] PUT    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Update-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Delete-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/resend-otp   --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).ResendOTPByEmail-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/verify-otp   --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).VerifyAuthToken-fm (5 handlers)
+[GIN-debug] POST   /api/v1/book-category/create --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).Insert-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book-category/all --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book-category/:id --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).GetByID-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/book-category/:id --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).Delete-fm (5 handlers)
+[GIN-debug] POST   /api/v1/book/book         --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Create-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book/book         --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book/book/:id     --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).GetByID-fm (5 handlers)
+[GIN-debug] PUT    /api/v1/book/book/:id     --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Update-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/book/book/:id     --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Delete-fm (5 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /                         --> github.com/kevinnaserwan/coursphere-api/internal/app.(*app).StartServer.func1 (4 handlers)
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] POST   /api/v1/user/register     --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Register-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/login        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Login-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetByID-fm (5 handlers)
+[GIN-debug] PUT    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Update-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Delete-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/resend-otp   --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).ResendOTPByEmail-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/verify-otp   --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).VerifyAuthToken-fm (5 handlers)
+[GIN-debug] POST   /api/v1/book-category/create --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).Insert-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book-category/all --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book-category/:id --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).GetByID-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/book-category/:id --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).Delete-fm (5 handlers)
+[GIN-debug] POST   /api/v1/book/create       --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Create-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book              --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book/:id          --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).GetByID-fm (5 handlers)
+[GIN-debug] PUT    /api/v1/book/:id          --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Update-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/book/:id          --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Delete-fm (5 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+[GIN] 2024/07/20 - 20:51:44 | 200 |   17.518333ms |             ::1 | GET      "/api/v1/book-category/all"
+[GIN] 2024/07/20 - 20:51:55 | 200 |   17.367875ms |             ::1 | POST     "/api/v1/book/create"
+[GIN] 2024/07/20 - 20:52:00 | 200 |    1.873583ms |             ::1 | GET      "/api/v1/book"
+[GIN] 2024/07/20 - 20:54:30 | 200 |    5.749708ms |             ::1 | GET      "/api/v1/book/339cf763-8060-40b8-a3f3-382dfadb7e73"
+[GIN] 2024/07/20 - 20:54:57 | 200 |    1.112125ms |             ::1 | GET      "/api/v1/book/339cf763-8060-40b8-a3f3-382dfadb7e73"
+[GIN] 2024/07/20 - 20:58:13 | 200 |    18.85575ms |             ::1 | GET      "/api/v1/book"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /                         --> github.com/kevinnaserwan/coursphere-api/internal/app.(*app).StartServer.func1 (4 handlers)
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] POST   /api/v1/user/register     --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Register-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/login        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Login-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetByID-fm (5 handlers)
+[GIN-debug] PUT    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Update-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Delete-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/resend-otp   --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).ResendOTPByEmail-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/verify-otp   --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).VerifyAuthToken-fm (5 handlers)
+[GIN-debug] POST   /api/v1/book-category/create --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).Insert-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book-category/all --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book-category/:id --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).GetByID-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/book-category/:id --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).Delete-fm (5 handlers)
+[GIN-debug] POST   /api/v1/book/create       --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Create-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book              --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book/:id          --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).GetByID-fm (5 handlers)
+[GIN-debug] PUT    /api/v1/book/:id          --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Update-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/book/:id          --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Delete-fm (5 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+[GIN] 2024/07/20 - 21:06:26 | 200 |    2.702458ms |             ::1 | GET      "/api/v1/book"
+[GIN] 2024/07/20 - 21:09:18 | 200 |    2.369917ms |             ::1 | GET      "/api/v1/book"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /                         --> github.com/kevinnaserwan/coursphere-api/internal/app.(*app).StartServer.func1 (4 handlers)
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] POST   /api/v1/user/register     --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Register-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/login        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Login-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetByID-fm (5 handlers)
+[GIN-debug] PUT    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Update-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Delete-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/resend-otp   --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).ResendOTPByEmail-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/verify-otp   --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).VerifyAuthToken-fm (5 handlers)
+[GIN-debug] POST   /api/v1/book-category/create --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).Insert-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book-category/all --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book-category/:id --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).GetByID-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/book-category/:id --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).Delete-fm (5 handlers)
+[GIN-debug] POST   /api/v1/book/create       --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Create-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book              --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book/:id          --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).GetByID-fm (5 handlers)
+[GIN-debug] PUT    /api/v1/book/:id          --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Update-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/book/:id          --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Delete-fm (5 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+[GIN] 2024/07/21 - 01:03:32 | 200 |    4.931166ms |             ::1 | GET      "/api/v1/book"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /                         --> github.com/kevinnaserwan/coursphere-api/internal/app.(*app).StartServer.func1 (4 handlers)
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] POST   /api/v1/user/register     --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Register-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/login        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Login-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetByID-fm (5 handlers)
+[GIN-debug] PUT    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Update-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Delete-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/resend-otp   --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).ResendOTPByEmail-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/verify-otp   --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).VerifyAuthToken-fm (5 handlers)
+[GIN-debug] POST   /api/v1/book-category/create --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).Insert-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book-category/all --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book-category/:id --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).GetByID-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/book-category/:id --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).Delete-fm (5 handlers)
+[GIN-debug] POST   /api/v1/book/create       --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Create-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book              --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book/:id          --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).GetByID-fm (5 handlers)
+[GIN-debug] PUT    /api/v1/book/:id          --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Update-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/book/:id          --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Delete-fm (5 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+[GIN] 2024/07/21 - 01:14:49 | 200 |    2.368292ms |             ::1 | GET      "/api/v1/book"
+[GIN] 2024/07/21 - 01:15:30 | 200 |    1.287375ms |             ::1 | GET      "/api/v1/book-category/all"
+[GIN] 2024/07/21 - 01:15:44 | 404 |    3.634584ms |             ::1 | GET      "/api/v1/book?name=PHP"
+Error #01: 404	Failed to get books: ERROR: column books.category_book_id does not exist (SQLSTATE 42703)
+[GIN] 2024/07/21 - 01:17:47 | 404 |    2.064125ms |             ::1 | GET      "/api/v1/book?name=Dart"
+Error #01: 404	Failed to get books: ERROR: column books.category_book_id does not exist (SQLSTATE 42703)
+[GIN] 2024/07/21 - 01:19:40 | 200 |    4.401041ms |             ::1 | GET      "/api/v1/book?category_name=Dart"
+[GIN] 2024/07/21 - 01:19:51 | 200 |    2.805125ms |             ::1 | GET      "/api/v1/book?category_name=PHP"
+[GIN] 2024/07/21 - 01:20:01 | 200 |    1.565792ms |             ::1 | GET      "/api/v1/book?category_name=Javascript"
+[GIN] 2024/07/21 - 01:20:07 | 200 |    1.505459ms |             ::1 | GET      "/api/v1/book"
+[GIN] 2024/07/21 - 01:20:13 | 200 |    1.235625ms |             ::1 | GET      "/api/v1/book?category_name="
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /                         --> github.com/kevinnaserwan/coursphere-api/internal/app.(*app).StartServer.func1 (4 handlers)
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] POST   /api/v1/user/register     --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Register-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/login        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Login-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetByID-fm (5 handlers)
+[GIN-debug] PUT    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Update-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Delete-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/resend-otp   --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).ResendOTPByEmail-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/verify-otp   --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).VerifyAuthToken-fm (5 handlers)
+[GIN-debug] POST   /api/v1/book-category/create --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).Insert-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book-category/all --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book-category/:id --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).GetByID-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/book-category/:id --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).Delete-fm (5 handlers)
+[GIN-debug] POST   /api/v1/book/create       --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Create-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book              --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book/:id          --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).GetByID-fm (5 handlers)
+[GIN-debug] PUT    /api/v1/book/:id          --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Update-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/book/:id          --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Delete-fm (5 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+[GIN] 2024/07/21 - 01:21:05 | 200 |    1.972417ms |             ::1 | GET      "/api/v1/book?category_name="
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /                         --> github.com/kevinnaserwan/coursphere-api/internal/app.(*app).StartServer.func1 (4 handlers)
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-debug] POST   /api/v1/user/register     --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Register-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/login        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Login-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users        --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).GetByID-fm (5 handlers)
+[GIN-debug] PUT    /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Update-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/user/users/:id    --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).Delete-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/resend-otp   --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).ResendOTPByEmail-fm (5 handlers)
+[GIN-debug] POST   /api/v1/user/verify-otp   --> github.com/kevinnaserwan/coursphere-api/internal/controller/user.(*userController).VerifyAuthToken-fm (5 handlers)
+[GIN-debug] POST   /api/v1/book-category/create --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).Insert-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book-category/all --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book-category/:id --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).GetByID-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/book-category/:id --> github.com/kevinnaserwan/coursphere-api/internal/controller/book_category.(*bookCategoryController).Delete-fm (5 handlers)
+[GIN-debug] POST   /api/v1/book/create       --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Create-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book              --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).GetAll-fm (5 handlers)
+[GIN-debug] GET    /api/v1/book/:id          --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).GetByID-fm (5 handlers)
+[GIN-debug] PUT    /api/v1/book/:id          --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Update-fm (5 handlers)
+[GIN-debug] DELETE /api/v1/book/:id          --> github.com/kevinnaserwan/coursphere-api/internal/controller/book.(*bookController).Delete-fm (5 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :5000
+[GIN] 2024/07/21 - 01:21:19 | 200 |    2.271875ms |             ::1 | GET      "/api/v1/book?category_name="
+[GIN] 2024/07/21 - 01:21:26 | 200 |    2.306375ms |             ::1 | GET      "/api/v1/book?category_name=Dart"
+[GIN] 2024/07/21 - 01:21:36 | 200 |   12.841042ms |             ::1 | GET      "/api/v1/book?category_name=Javascript"
+[GIN] 2024/07/21 - 01:21:43 | 200 |     774.459µs |             ::1 | GET      "/api/v1/book?category_name=PHP"
+[GIN] 2024/07/21 - 01:21:56 | 200 |       656.5µs |             ::1 | GET      "/api/v1/book?category_name=Java"
+[GIN] 2024/07/21 - 01:22:04 | 200 |      968.75µs |             ::1 | GET      "/api/v1/book?category_name=Javascript"

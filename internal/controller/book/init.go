@@ -14,9 +14,9 @@ func NewBookController(router *gin.RouterGroup, bookService bookService.Service)
 		BookService: bookService,
 	}
 
-	router.POST("/book", controller.Create)
-	router.GET("/book", controller.GetAll)
-	router.GET("/book/:id", controller.GetByID)
-	router.PUT("/book/:id", controller.Update)
-	router.DELETE("/book/:id", controller.Delete)
+	router.POST("/create", controller.Create)
+	router.GET("", controller.GetAll)
+	router.GET("/:id", controller.GetByID)
+	router.PUT("/:id", controller.Update)
+	router.DELETE("/:id", controller.Delete)
 }

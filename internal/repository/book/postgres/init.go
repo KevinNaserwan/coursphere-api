@@ -37,12 +37,20 @@ func (r *bookRepository) GetByID(ctx context.Context, ID uuid.UUID) (*model.Book
 	return book, nil
 }
 
-// GetAll retrieves all books from the database
-func (r *bookRepository) GetAll(ctx context.Context) ([]model.Book, error) {
-	books := []model.Book{}
-	if err := r.db.Find(&books).Error; err != nil {
-		return nil, errCommon.NewNotFound("No books found: " + err.Error())
+// GetAll retrieves all books, optionally filtered by category name
+func (r *bookRepository) GetAll(ctx context.Context, categoryName string) ([]model.Book, error) {
+	var books []model.Book
+	query := r.db.WithContext(ctx).Preload("CategoryBook")
+
+	if categoryName != "" {
+		query = query.Joins("JOIN category_books ON books.category_id = category_books.id").
+			Where("category_books.name = ?", categoryName)
 	}
+
+	if err := query.Find(&books).Error; err != nil {
+		return nil, err
+	}
+
 	return books, nil
 }
 

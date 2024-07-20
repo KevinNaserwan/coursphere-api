@@ -78,14 +78,22 @@ func (s *bookService) GetBookByID(ctx context.Context, ID string) (res response.
 	return res, nil
 }
 
-// GetAllBooks retrieves all books
-func (s *bookService) GetAllBooks(ctx context.Context) (res []response.BookResponse, err error) {
-	books, err := s.BookRepository.GetAll(ctx)
+// GetAllBooks retrieves all books, optionally filtered by category name
+func (s *bookService) GetAllBooks(ctx context.Context, categoryName string) (res []response.BookResponse, err error) {
+	books, err := s.BookRepository.GetAll(ctx, categoryName)
 	if err != nil {
 		return res, errCommon.NewNotFound("Failed to get books: " + err.Error())
 	}
 
 	for _, book := range books {
+		categories := []response.BookCategoryResponse{}
+		if book.CategoryBookID != uuid.Nil {
+			categories = append(categories, response.BookCategoryResponse{
+				ID:   book.CategoryBook.ID.String(),
+				Name: book.CategoryBook.Name,
+			})
+		}
+
 		res = append(res, response.BookResponse{
 			ID:          book.ID.String(),
 			Title:       book.Title,
@@ -96,11 +104,11 @@ func (s *bookService) GetAllBooks(ctx context.Context) (res []response.BookRespo
 			BookFile:    book.BookFile,
 			Overview:    book.Overview,
 			Writer:      book.Writer,
+			Category:    categories,
 		})
 	}
 
 	return res, nil
-
 }
 
 // UpdateBook updates a book

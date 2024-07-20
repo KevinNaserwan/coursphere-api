@@ -84,14 +84,15 @@ type CategoryBook struct {
 
 type Book struct {
 	gorm.Model
-	ID             uuid.UUID `gorm:"type:uuid;default:gen_random_uuid()"`
-	Title          string    `gorm:"column:title"`
-	Language       string    `gorm:"column:languange"`
-	Rank           int       `gorm:"column:rank"`
-	ReadingTime    int       `gorm:"column:reading_time"`
-	Likes          int       `gorm:"column:likes"`
-	BookFile       string    `gorm:"column:book_file"`
-	Overview       string    `gorm:"column:overview"`
-	Writer         string    `gorm:"column:writer"`
-	CategoryBookID uuid.UUID `gorm:"column:category_id;type:uuid;default:gen_random_uuid()"`
+	ID             uuid.UUID    `gorm:"type:uuid;default:gen_random_uuid()"`
+	Title          string       `gorm:"column:title"`
+	Language       string       `gorm:"column:languange"`
+	Rank           int          `gorm:"column:rank"`
+	ReadingTime    int          `gorm:"column:reading_time"`
+	Likes          int          `gorm:"column:likes"`
+	BookFile       string       `gorm:"column:book_file"`
+	Overview       string       `gorm:"column:overview"`
+	Writer         string       `gorm:"column:writer"`
+	CategoryBookID uuid.UUID    `gorm:"column:category_id;type:uuid;default:gen_random_uuid()"`
+	CategoryBook   CategoryBook `gorm:"foreignKey:CategoryBookID;references:ID"`
 }

@@ -7,17 +7,17 @@ import (
 	"github.com/kevinnaserwan/coursphere-api/internal/http/request"
 )
 
-// @Summary		Create Book
-// @Description	Create Book Endpoint
-// @Tags			Book
-// @Accept			json
-// @Produce		json
-// @Param			request	body		request.CreateBookRequest	true	"Create Book Request"
-// @Success		200		{object}	http.Response{value=response.JwtToken}
-// @Failure		400		{object}	http.Error
-// @Failure		404		{object}	http.Error
-// @Failure		500		{object}	http.Error
-// @Router			/book/create [post]
+//	@Summary		Create Book
+//	@Description	Create Book Endpoint
+//	@Tags			Book
+//	@Accept			json
+//	@Produce		json
+//	@Param			request	body		request.CreateBookRequest	true	"Create Book Request"
+//	@Success		200		{object}	http.Response{value=response.JwtToken}
+//	@Failure		400		{object}	http.Error
+//	@Failure		404		{object}	http.Error
+//	@Failure		500		{object}	http.Error
+//	@Router			/book/create [post]
 func (c *bookController) Create(ctx *gin.Context) {
 	var req request.CreateBookRequest
 	if err := ctx.ShouldBindJSON(&req); err != nil {
@@ -33,17 +33,17 @@ func (c *bookController) Create(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{"message": "Book created successfully"})
 }
 
-// @Summary		Get Book By ID
-// @Description	Get Book By ID Endpoint
-// @Tags			Book
-// @Accept			json
-// @Produce		json
-// @Param			ID	path		string	true	"Book ID"
-// @Success		200	{object}	http.Response{value=response.BookResponse}
-// @Failure		400	{object}	http.Error
-// @Failure		404	{object}	http.Error
-// @Failure		500	{object}	http.Error
-// @Router			/book/{id} [get]
+//	@Summary		Get Book By ID
+//	@Description	Get Book By ID Endpoint
+//	@Tags			Book
+//	@Accept			json
+//	@Produce		json
+//	@Param			ID	path		string	true	"Book ID"
+//	@Success		200	{object}	http.Response{value=response.BookResponse}
+//	@Failure		400	{object}	http.Error
+//	@Failure		404	{object}	http.Error
+//	@Failure		500	{object}	http.Error
+//	@Router			/book/{id} [get]
 func (c *bookController) GetByID(ctx *gin.Context) {
 	ID := ctx.Param("id")
 
@@ -56,17 +56,17 @@ func (c *bookController) GetByID(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, res)
 }
 
-// @Summary		Get All Books
-// @Description	Get All Books Endpoint
-// @Tags			Book
-// @Accept			json
-// @Produce		json
-// @Param			category_name	query	string	false	"Category Name"
-// @Success		200	{object}	http.Response{value=response.BookResponse}
-// @Failure		400	{object}	http.Error
-// @Failure		404	{object}	http.Error
-// @Failure		500	{object}	http.Error
-// @Router			/book [get]
+//	@Summary		Get All Books
+//	@Description	Get All Books Endpoint
+//	@Tags			Book
+//	@Accept			json
+//	@Produce		json
+//	@Param			category_name	query		string	false	"Category Name"
+//	@Success		200				{object}	http.Response{value=response.BookResponse}
+//	@Failure		400				{object}	http.Error
+//	@Failure		404				{object}	http.Error
+//	@Failure		500				{object}	http.Error
+//	@Router			/book [get]
 func (c *bookController) GetAll(ctx *gin.Context) {
 	categoryName := ctx.Query("category_name")
 	res, err := c.BookService.GetAllBooks(ctx, categoryName)
@@ -78,18 +78,18 @@ func (c *bookController) GetAll(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, res)
 }
 
-// @Summary		Update Book
-// @Description	Update Book Endpoint
-// @Tags			Book
-// @Accept			json
-// @Produce		json
-// @Param			ID		path		string						true	"Book ID"
-// @Param			request	body		request.UpdateBookRequest	true	"Update Book Request"
-// @Success		200		{object}	http.Response{value=response.BookResponse}
-// @Failure		400		{object}	http.Error
-// @Failure		404		{object}	http.Error
-// @Failure		500		{object}	http.Error
-// @Router			/book/{id} [put]
+//	@Summary		Update Book
+//	@Description	Update Book Endpoint
+//	@Tags			Book
+//	@Accept			json
+//	@Produce		json
+//	@Param			ID		path		string						true	"Book ID"
+//	@Param			request	body		request.UpdateBookRequest	true	"Update Book Request"
+//	@Success		200		{object}	http.Response{value=response.BookResponse}
+//	@Failure		400		{object}	http.Error
+//	@Failure		404		{object}	http.Error
+//	@Failure		500		{object}	http.Error
+//	@Router			/book/{id} [put]
 func (c *bookController) Update(ctx *gin.Context) {
 	ID := ctx.Param("id")
 
@@ -108,17 +108,17 @@ func (c *bookController) Update(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, res)
 }
 
-// @Summary		Delete Book
-// @Description	Delete Book Endpoint
-// @Tags			Book
-// @Accept			json
-// @Produce		json
-// @Param			ID	path		string	true	"Book ID"
-// @Success		200	{object}	http.Response{value=response.BookResponse}
-// @Failure		400	{object}	http.Error
-// @Failure		404	{object}	http.Error
-// @Failure		500	{object}	http.Error
-// @Router			/book/{id} [delete]
+//	@Summary		Delete Book
+//	@Description	Delete Book Endpoint
+//	@Tags			Book
+//	@Accept			json
+//	@Produce		json
+//	@Param			ID	path		string	true	"Book ID"
+//	@Success		200	{object}	http.Response{value=response.BookResponse}
+//	@Failure		400	{object}	http.Error
+//	@Failure		404	{object}	http.Error
+//	@Failure		500	{object}	http.Error
+//	@Router			/book/{id} [delete]
 func (c *bookController) Delete(ctx *gin.Context) {
 	ID := ctx.Param("id")
 

@@ -13,4 +13,5 @@ type Repository interface {
 	GetAll(ctx context.Context) ([]model.Course, error)
 	Update(ctx context.Context, course *model.Course) error
 	Delete(ctx context.Context, ID uuid.UUID) error
+	InsertCourseVideo(ctx context.Context, courseID uuid.UUID, videoID uuid.UUID) error
 }

@@ -55,7 +55,7 @@ type Course struct {
 	BannerImage string         `gorm:"column:banner_image"`
 	Title       string         `gorm:"column:title"`
 	Description string         `gorm:"column:description"`
-	MentorID    uuid.UUID      `gorm:"column:id;type:uuid;default:gen_random_uuid()"`
+	MentorID    uuid.UUID      `gorm:"column:mentor_id;type:uuid;default:gen_random_uuid()"`
 	Videos      []Video        `gorm:"many2many:video"`
 	Star        int            `gorm:"column:star"`
 	Price       int            `gorm:"column:price"`
@@ -67,11 +67,10 @@ type Course struct {
 
 type Video struct {
 	gorm.Model
-	ID       uuid.UUID `gorm:"type:uuid;default:gen_random_uuid()"`
-	CourseID uuid.UUID `gorm:"column:course_id;type:uuid;default:gen_random_uuid()"`
-	Name     string    `gorm:"column:name"`
-	URL      string    `gorm:"column:url"`
-	Time     string    `gorm:"column:time"`
+	ID   uuid.UUID `gorm:"type:uuid;default:gen_random_uuid()"`
+	Name string    `gorm:"column:name"`
+	URL  string    `gorm:"column:url"`
+	Time string    `gorm:"column:time"`
 }
 
 type CategoryBook struct {

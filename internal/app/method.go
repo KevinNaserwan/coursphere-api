@@ -9,15 +9,27 @@ import (
 	postgresConfig "github.com/kevinnaserwan/coursphere-api/config/postgres"
 	bookController "github.com/kevinnaserwan/coursphere-api/internal/controller/book"
 	bookCategoryController "github.com/kevinnaserwan/coursphere-api/internal/controller/book_category"
+	courseController "github.com/kevinnaserwan/coursphere-api/internal/controller/course"
+	courseCategoryController "github.com/kevinnaserwan/coursphere-api/internal/controller/coursecate"
+	mentorController "github.com/kevinnaserwan/coursphere-api/internal/controller/mentor"
 	userController "github.com/kevinnaserwan/coursphere-api/internal/controller/user"
+	videoController "github.com/kevinnaserwan/coursphere-api/internal/controller/video"
 	http "github.com/kevinnaserwan/coursphere-api/internal/http/server"
 	"github.com/kevinnaserwan/coursphere-api/internal/http/server/middleware"
 	BookRepository "github.com/kevinnaserwan/coursphere-api/internal/repository/book/postgres"
 	BookCategoryRepository "github.com/kevinnaserwan/coursphere-api/internal/repository/book_category/postgres"
+	CourseRepository "github.com/kevinnaserwan/coursphere-api/internal/repository/course/postgres"
+	CourseCategoryRepository "github.com/kevinnaserwan/coursphere-api/internal/repository/course_category/postgres"
+	MentorRepository "github.com/kevinnaserwan/coursphere-api/internal/repository/mentor/postgres"
 	UserRepository "github.com/kevinnaserwan/coursphere-api/internal/repository/user/postgres"
+	VideoRepository "github.com/kevinnaserwan/coursphere-api/internal/repository/video/postgres"
 	BookService "github.com/kevinnaserwan/coursphere-api/internal/service/book"
 	BookCategoryService "github.com/kevinnaserwan/coursphere-api/internal/service/book_category"
+	courseService "github.com/kevinnaserwan/coursphere-api/internal/service/course"
+	courseCategoryService "github.com/kevinnaserwan/coursphere-api/internal/service/course_category"
+	mentorService "github.com/kevinnaserwan/coursphere-api/internal/service/mentor"
 	UserService "github.com/kevinnaserwan/coursphere-api/internal/service/user"
+	videoService "github.com/kevinnaserwan/coursphere-api/internal/service/video"
 	"github.com/kevinnaserwan/coursphere-api/internal/util/jwt"
 	"github.com/kevinnaserwan/coursphere-api/internal/util/postgres"
 	swaggerFiles "github.com/swaggo/files"
@@ -85,9 +97,17 @@ func initController(
 	userRepository := UserRepository.NewUserRepository(db)
 	bookCategoryRepository := BookCategoryRepository.NewBookCategoryRepository(db)
 	bookRepository := BookRepository.NewBookRepository(db)
+	mentorRepository := MentorRepository.NewMentorRepository(db)
+	courseCategoryRepository := CourseCategoryRepository.NewCourseCategoryRepository(db)
+	courseRepository := CourseRepository.NewCourseRepository(db)
+	VideoRepository := VideoRepository.NewVideoRepository(db)
 	userService := UserService.NewUserService(userRepository, jwtManager, mailDialer)
 	bookCategoryService := BookCategoryService.NewBookCategoryService(bookCategoryRepository)
 	bookService := BookService.NewBookService(bookRepository)
+	mentorService := mentorService.NewMentorService(mentorRepository)
+	courseCategoryService := courseCategoryService.NewCourseCategoryService(courseCategoryRepository)
+	courseService := courseService.NewCourseService(courseRepository, mentorRepository, courseCategoryRepository)
+	videoService := videoService.NewVideoService(VideoRepository)
 
 	routerGroup := root.Group("/api/v1")
 
@@ -96,4 +116,8 @@ func initController(
 	userController.NewUserController(routerGroup.Group("/user"), userService, jwtManager)
 	bookCategoryController.NewBookCategoryController(routerGroup.Group("/book-category"), bookCategoryService)
 	bookController.NewBookController(routerGroup.Group("/book"), bookService)
+	mentorController.NewMentorController(routerGroup.Group("/mentor"), mentorService)
+	courseCategoryController.NewCourseCategoryController(routerGroup.Group("/course-category"), courseCategoryService)
+	courseController.NewCourseController(routerGroup.Group("/course"), courseService)
+	videoController.NewVideoController(routerGroup.Group("/video"), videoService)
 }

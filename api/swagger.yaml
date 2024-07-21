@@ -52,6 +52,41 @@ definitions:
     - title
     - writer
     type: object
+  request.CreateCategoryCourseRequest:
+    properties:
+      name:
+        type: string
+    type: object
+  request.CreateCourseRequest:
+    properties:
+      banner_image:
+        type: string
+      category_course_id:
+        type: string
+      category_id:
+        type: string
+      description:
+        type: string
+      lessons:
+        type: integer
+      mentor_id:
+        type: string
+      price:
+        type: integer
+      star:
+        type: integer
+      title:
+        type: string
+    type: object
+  request.CreateMentorRequest:
+    properties:
+      experience:
+        type: string
+      image:
+        type: string
+      name:
+        type: string
+    type: object
   request.UpdateBookRequest:
     properties:
       book_file:
@@ -71,6 +106,43 @@ definitions:
       title:
         type: string
       writer:
+        type: string
+    type: object
+  request.UpdateCategoryCourseRequest:
+    properties:
+      name:
+        type: string
+    type: object
+  request.UpdateCourseRequest:
+    properties:
+      banner_image:
+        type: string
+      category_course_id:
+        type: string
+      category_id:
+        type: string
+      description:
+        type: string
+      lessons:
+        type: integer
+      mentor_id:
+        type: string
+      price:
+        type: integer
+      star:
+        type: integer
+      title:
+        type: string
+    type: object
+  request.UpdateMentorRequest:
+    properties:
+      experience:
+        type: string
+      id:
+        type: string
+      image:
+        type: string
+      name:
         type: string
     type: object
   request.UserLoginRequest:
@@ -157,10 +229,51 @@ definitions:
     - title
     - writer
     type: object
+  response.CourseCategoryResponse:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  response.CourseResponse:
+    properties:
+      banner_image:
+        type: string
+      category:
+        $ref: '#/definitions/response.CourseCategoryResponse'
+      description:
+        type: string
+      lessons:
+        type: integer
+      mentor:
+        $ref: '#/definitions/response.MentorResponse'
+      price:
+        type: integer
+      star:
+        type: integer
+      title:
+        type: string
+      videos:
+        items:
+          $ref: '#/definitions/response.VideoResponse'
+        type: array
+    type: object
   response.JwtToken:
     properties:
       token:
         example: SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+        type: string
+    type: object
+  response.MentorResponse:
+    properties:
+      experience:
+        type: string
+      id:
+        type: string
+      image:
+        type: string
+      name:
         type: string
     type: object
   response.UserAchievementResponse:
@@ -189,6 +302,17 @@ definitions:
       username:
         type: string
     type: object
+  response.VideoResponse:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      time:
+        type: string
+      url:
+        type: string
+    type: object
 externalDocs:
   description: OpenAPI
   url: https://swagger.io/resources/open-api/
@@ -202,6 +326,11 @@ paths:
       consumes:
       - application/json
       description: Get All Books Endpoint
+      parameters:
+      - description: Category Name
+        in: query
+        name: category_name
+        type: string
       produces:
       - application/json
       responses:
@@ -495,6 +624,569 @@ paths:
       summary: Create Book
       tags:
       - Book
+  /course:
+    get:
+      consumes:
+      - application/json
+      description: Get All Courses Endpoint
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.CourseResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Get All Courses
+      tags:
+      - Course
+  /course/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Course Endpoint
+      parameters:
+      - description: Course ID
+        in: path
+        name: ID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.JwtToken'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Delete Course
+      tags:
+      - Course
+    get:
+      consumes:
+      - application/json
+      description: Get Course By ID Endpoint
+      parameters:
+      - description: Course ID
+        in: path
+        name: ID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.CourseResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Get Course By ID
+      tags:
+      - Course
+    put:
+      consumes:
+      - application/json
+      description: Update Course Endpoint
+      parameters:
+      - description: Course ID
+        in: path
+        name: ID
+        required: true
+        type: string
+      - description: Update Course Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.UpdateCourseRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.JwtToken'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Update Course
+      tags:
+      - Course
+  /course/create:
+    post:
+      consumes:
+      - application/json
+      description: Create Course  Endpoint
+      parameters:
+      - description: Create Course  Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.CreateCourseRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.JwtToken'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Create Course
+      tags:
+      - Course
+  /course_category/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Course Category Endpoint
+      parameters:
+      - description: Course Category ID
+        in: path
+        name: ID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.JwtToken'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Delete Course Category
+      tags:
+      - Course Category
+    get:
+      consumes:
+      - application/json
+      description: Get Course Category By ID Endpoint
+      parameters:
+      - description: Course Category ID
+        in: path
+        name: ID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.CourseCategoryResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Get Course Category By ID
+      tags:
+      - Course Category
+    put:
+      consumes:
+      - application/json
+      description: Update Course Category Endpoint
+      parameters:
+      - description: Course Category ID
+        in: path
+        name: ID
+        required: true
+        type: string
+      - description: Update Course Category Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.UpdateCategoryCourseRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.JwtToken'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Update Course Category
+      tags:
+      - Course Category
+  /course_category/all:
+    get:
+      consumes:
+      - application/json
+      description: Get All Course Categories Endpoint
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.CourseCategoryResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Get All Course Categories
+      tags:
+      - Course Category
+  /course_category/create:
+    post:
+      consumes:
+      - application/json
+      description: Create Course Category Endpoint
+      parameters:
+      - description: Create Course Category Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.CreateCategoryCourseRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.JwtToken'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Create Course Category
+      tags:
+      - Course Category
+  /mentor/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Mentor Endpoint
+      parameters:
+      - description: Mentor ID
+        in: path
+        name: ID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.MentorResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Delete Mentor
+      tags:
+      - Mentor
+    get:
+      consumes:
+      - application/json
+      description: Get Mentor By ID Endpoint
+      parameters:
+      - description: Mentor ID
+        in: path
+        name: ID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.MentorResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Get Mentor By ID
+      tags:
+      - Mentor
+  /mentor/all:
+    get:
+      consumes:
+      - application/json
+      description: Get All Mentors Endpoint
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.MentorResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Get All Mentors
+      tags:
+      - Mentor
+  /mentor/create:
+    post:
+      consumes:
+      - application/json
+      description: Create Mentor Endpoint
+      parameters:
+      - description: Create Mentor Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.CreateMentorRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.JwtToken'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Create Mentor
+      tags:
+      - Mentor
+  /mentor/update:
+    put:
+      consumes:
+      - application/json
+      description: Update Mentor Endpoint
+      parameters:
+      - description: Update Mentor Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/request.UpdateMentorRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/http.Response'
+            - properties:
+                value:
+                  $ref: '#/definitions/response.MentorResponse'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Error'
+      summary: Update Mentor
+      tags:
+      - Mentor
   /user/{id}:
     delete:
       consumes:
